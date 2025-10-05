@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,38 +8,77 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="hea">
             <h1>
                 Daily planner
-            </h1> 
+            </h1>
         </div>
     </header>
     <main>
         <div class="poom">
-            <div class="inner_task"></div>
-            <div class="button1"><a>✔</a></div>
+            <input type="text" class="inner_task"></input>
+            <button class="button1"><a>✔</a></button>
         </div>
         <div class="blocks">
-            <div class="block">
+            <div class="block" id="todo-board">
                 <h2 class="section-name">task</h2>
-                <div class="task">Task1</div>
-                <div class="task">Task2</div>
+
+                <div class="task-list" id="todo-list">
+
+                    <div class="task">
+                        <div class="task-content">
+                        
+                            <a>task</a>
+                        </div>
+                        <div class="task-controls">
+                            <button class="move_right"></button>
+                            <button class="delete_btn"></button>
+                        </div>
+                    </div>
+
+                </div>
+
+
                 <div class="button2"></div>
             </div>
-            <div class="block">
+            <div class="block" id="inprogress-board">
                 <h2 class="section-name">in process</h2>
-                <div class="task">Task1</div>
-                <div class="task">Task2</div>
+
+                <div class="task-list" id="inprogress-list">
+                    <div class="task">
+                        <div class="task-content">
+                            
+                            <span>task</span>
+                        </div>
+                        <div class="task-controls">
+                            <button class="move_right"></button>
+                            <button class="delete_btn"></button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="button2"></div>
             </div>
             <div class="block">
-                <h2 class="section-name">done</h2>
-                <div class="task">Task1</div>
-                <div class="task">Task2</div>
+                <h2 class="section-name" id="done-board">done</h2>
+                <div class="task-list" id="done-list">
+                    <div class="task">
+                        <div class="task-content">
+                           
+                            <span>task</span>
+                        </div>
+                        <div class="task-controls">
+                            <button class="delete_btn"></button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
 </body>
+
 </html>
