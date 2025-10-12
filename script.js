@@ -17,9 +17,14 @@ function createTask(text) {
 let todo_list= document.querySelector("#todo-list")
 let inprogress_list= document.querySelector("#inprogress-list")
 let done_list= document.querySelector("#done-list")
-
+let blocks = document.querySelector(".blocks")
 let input_field = document.querySelector(".inner_task")
 let add_btn = document.querySelector(".button1")
+
+function saveTasks(){
+    let encodedHTML=encodeURIComponent(blocks.innerHTML);
+    document.cookie= `tasks=${encodedHTML}; max-age=31536000; path=/`;
+}
 
 add_btn.addEventListener("click", function(){
     let taskText = input_field.value.trim();
@@ -29,3 +34,67 @@ add_btn.addEventListener("click", function(){
         input_field.value = '';
     }
 })
+
+
+add_btn.addEventListener('mouseenter', () => {
+    anime({
+      targets: add_btn,
+      boxShadow: ['0 0 0px #E6D7D7', '0 0 30px #E6D7D7'],
+      duration: 500,
+      easing: 'linear',
+    });
+});
+add_btn.addEventListener('mouseleave', () => {
+    anime({
+      targets: add_btn,
+      boxShadow: ['0 0 30px #E6D7D7', '0 0 0px #E6D7D7'],
+      duration: 500,
+      easing: 'linear',
+    });
+});
+
+
+function taskHandler(e) {
+    let task = e.target.closest(".task")
+    if (!task) return;
+    if (e.target.classList.contains('delete_btn')){
+        task.remove();
+        saveTasks()
+        return;
+    }
+    if (e.target.classList.contains('move_right')) {
+        let current_list_id = e.target.closest(".task-list").id
+        if (current_list_id == "todo-list"){
+            inprogress_list.appendChild(task)
+        }
+        if (current_list_id == "inprogress-list") {
+            done_list.appendChild(task)
+            move_right.style.opacity = '0'
+        }
+        saveTasks()
+    }
+}
+
+todo_list.addEventListener("click", taskHandler)
+inprogress_list.addEventListener("click", taskHandler)
+done_list.addEventListener("click", taskHandler)
+
+
+let cookies=document.cookie.split(';')
+let savedTasks='';
+for(let i=0; i<cookies.length;i++){
+    let key_vaule=cookies[i].split("=")
+    if(key_vaule[0]=='tasks'){
+        savedTasks=decodeURIComponent(key_vaule[1])
+        break
+    }
+}
+if(savedTasks){
+    blocks.innerHTML=savedTasks;
+    let todo_list= document.querySelector("#todo-list")
+    let inprogress_list= document.querySelector("#inprogress-list")
+    let done_list= document.querySelector("#done-list")
+    todo_list.addEventListener("click", taskHandler)
+    inprogress_list.addEventListener("click", taskHandler)
+    done_list.addEventListener("click", taskHandler)
+}

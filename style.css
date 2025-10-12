@@ -57,6 +57,7 @@ gap: 53px;
     margin-left:12px;
     background: #A1ADB8;
     font-size: 35px;
+     border-color: #A1ADB8;
 
 }
 
@@ -65,6 +66,8 @@ gap: 53px;
     width: 43px;
     height: 43px;
     font-size: 33px;
+    border-color: #D9D9D9;
+
 
 }
 .blocks{
@@ -98,14 +101,16 @@ gap: 53px;
     background: #D2BBBB;
     width: 300px;
     height: 60px;
-
+    margin: 0;
+    margin-bottom: 20px;
 
 }
 
 .task{
     display: flex;
     flex-wrap: nowrap;
-    justify-content:space-between
+    justify-content:space-between;
+    font-size: 22px;
 }
 
 .move_right{
@@ -122,4 +127,13 @@ gap: 53px;
     height: 15px;
     background: #EB8181;
     border-color: #EB8181;
+}
+
+.inner_task:focus {
+  background-color: rgb(142, 166, 190);
+  border: 2px solid rgb(124, 117, 165);
+  outline: none; /* Remove default browser outline if desired */
+}
+ #done-list .move_right {
+    display:none;
 }
