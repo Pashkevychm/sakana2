@@ -3,16 +3,14 @@ function createTask(text) {
     task.classList.add('task');
     task.innerHTML = `
     <div class="task-content">
-        
         <span>${text}</span>
     </div>
     <div class="task-controls">
-        <button class="move_right"></button>
-        <button class="delete_btn"></button>
+        <button class="move_right">➡️</button>
+        <button class="delete_btn">🗑️</button>
     </div>
     `;
     return task
-
 }
 
 function saveTasks(){
@@ -22,8 +20,8 @@ function saveTasks(){
 
 let blocks = document.querySelector(".blocks")
 
-let cookies=document.cookie.split(';')
 let savedTasks=false;
+let cookies=document.cookie.split(';')
 for(let i=0; i<cookies.length;i++){
     let key_vaule=cookies[i].trim().split("=")
     if(key_vaule[0]=='tasks'){
@@ -42,7 +40,6 @@ let input_field = document.querySelector(".inner_task")
 let add_btn = document.querySelector(".button1")
 
 
-
 add_btn.addEventListener("click", function(){
     let taskText = input_field.value.trim();
     if (taskText !== '') {
@@ -50,7 +47,7 @@ add_btn.addEventListener("click", function(){
         todo_list.appendChild(newTask)
         input_field.value = '';
     }
-    saveTasks();
+    saveTasks()
 })
 
 
@@ -71,7 +68,6 @@ add_btn.addEventListener('mouseleave', () => {
     });
 });
 
-
 function taskHandler(e) {
     let task = e.target.closest(".task")
     if (!task) return;
@@ -87,7 +83,6 @@ function taskHandler(e) {
         }
         if (current_list_id == "inprogress-list") {
             done_list.appendChild(task)
-            move_right.style.opacity = '0'
         }
         saveTasks()
     }
