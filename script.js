@@ -87,7 +87,6 @@ function taskHandler(e) {
         }
         if (current_list_id == "inprogress-list") {
             done_list.appendChild(task)
-            move_right.style.opacity = '0'
         }
         saveTasks()
     }
