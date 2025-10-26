@@ -54,24 +54,6 @@ add_btn.addEventListener("click", function(){
 })
 
 
-add_btn.addEventListener('mouseenter', () => {
-    anime({
-      targets: add_btn,
-      boxShadow: ['0 0 0px #E6D7D7', '0 0 30px #E6D7D7'],
-      duration: 500,
-      easing: 'linear',
-    });
-});
-add_btn.addEventListener('mouseleave', () => {
-    anime({
-      targets: add_btn,
-      boxShadow: ['0 0 30px #E6D7D7', '0 0 0px #E6D7D7'],
-      duration: 500,
-      easing: 'linear',
-    });
-});
-
-
 function taskHandler(e) {
     let task = e.target.closest(".task")
     if (!task) return;
